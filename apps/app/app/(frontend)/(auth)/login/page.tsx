@@ -12,7 +12,7 @@ import { AuthForm } from '@/components/auth/auth-form';
 
 export default function LoginPage() {
   return (
-    <main className="flex min-h-svh items-center justify-center bg-muted/40 px-4 py-10">
+    <main className="flex min-h-[calc(100svh-5rem)] items-center justify-center bg-muted/40 px-4 py-10">
       <Card className="w-full max-w-md">
         <CardHeader>
           <p className="text-xs font-semibold tracking-[0.18em] text-primary uppercase">
