@@ -15,6 +15,7 @@
     "payload:migrate:status": "payload migrate:status --config ./payload.config.ts",
     "auth:migrate": "pnpm --filter @template/auth exec auth migrate --yes",
     "payload:importmap": "payload generate:importmap --config ./payload.config.ts",
+    "test:e2e": "playwright test --config e2e/playwright.config.ts",
     "predev": "pnpm payload:importmap",
     "prebuild": "pnpm payload:importmap",
     "pretypecheck": "pnpm payload:importmap"
@@ -34,12 +35,14 @@
     "server-only": "catalog:"
   },
   "devDependencies": {
+    "@playwright/test": "catalog:",
     "@tailwindcss/postcss": "catalog:",
     "@types/node": "^26.0.0",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
     "sass": "^1.89.2",
     "tailwindcss": "catalog:",
+    "tsx": "catalog:",
     "typescript": "catalog:"
   }
 }

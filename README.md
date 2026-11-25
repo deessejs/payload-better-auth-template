@@ -61,6 +61,14 @@ pnpm format:check
 
 GraphQL is explicitly disabled. Payload uses its development schema-push workflow while developing. Generate and commit migrations for deployed environments, then apply them with Payload's CLI. Better Auth owns its own schema migration through its CLI. Keep both workflows pointed at the same database URL; Better Auth creates/uses only `auth`, and Payload stays on `public`.
 
+## Local agent testing
+
+The agent workflow uses a loopback PostgreSQL server, a database and role derived from the current worktree, and separate run-scoped databases for browser tests. It never reads the root `.env` as its database source and refuses non-loopback or mismatched database identities. Run `pnpm agent:prepare` to install locked dependencies, install Chromium, provision the local database, migrate Better Auth, create a Payload admin fixture, and sign up the ordinary user through the local Better Auth handler. Then use `pnpm agent:start` for the app or `pnpm agent:test` to run the browser acceptance suite against a fresh disposable database and remove that database and role afterward.
+
+The worktree env and generated passwords are kept in ignored `.local/agent-test.env` with mode `0600`. `pnpm agent:credentials` prints the generated local SaaS user, sign-up fixture, and Payload admin credentials only after checking that the private env file and worktree database belong to this local worktree. The fixture emails use `example.test`; do not reuse these credentials elsewhere. `pnpm agent:reset -- --yes` and `pnpm agent:clean -- --yes` affect only the exact worktree database after checking its loopback server and owner. PostgreSQL must be listening on loopback and accessible through non-interactive `sudo -n -u postgres`, or through a loopback-only `AGENT_TEST_PG_ADMIN_URL` targeting the same server and port.
+
+The browser suite checks the Better Auth sign-up and login pages, server-side dashboard protection, owner-scoped record persistence, SaaS-user denial at the Payload REST/Admin boundary, and Payload admin access without a Better Auth session. The Payload fixture is created with Payload's Local API; ordinary users are created through Better Auth's local HTTP handler. See [the complete local agent workflow](docs/local-agent-testing.md) for prerequisites, credentials handling, reset behavior, and troubleshooting.
+
 ## Compatibility references
 
 - [Payload 3.94.2 installation requirements](https://github.com/payloadcms/payload/blob/v3.94.2/docs/getting-started/installation.mdx)

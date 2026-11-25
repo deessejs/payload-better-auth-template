@@ -7,7 +7,15 @@
     "lint": "turbo lint",
     "typecheck": "turbo typecheck",
     "format": "oxfmt --ignore-path .oxfmtignore .",
-    "format:check": "oxfmt --ignore-path .oxfmtignore --check ."
+    "format:check": "oxfmt --ignore-path .oxfmtignore --check .",
+    "agent:prepare": "node scripts/agent-test.mjs prepare",
+    "agent:start": "node scripts/agent-test.mjs start",
+    "agent:status": "node scripts/agent-test.mjs status",
+    "agent:credentials": "node scripts/agent-test.mjs credentials",
+    "agent:reset": "node scripts/agent-test.mjs reset",
+    "agent:clean": "node scripts/agent-test.mjs clean",
+    "agent:test": "node scripts/agent-test.mjs test",
+    "test:agent-infra": "node --test scripts/agent-test-core.test.mjs"
   },
   "devDependencies": {
     "oxfmt": "catalog:",
