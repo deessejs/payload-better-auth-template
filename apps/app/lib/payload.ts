@@ -2,7 +2,7 @@ import 'server-only';
 
 import config from '@payload-config';
 import { getPayload } from 'payload';
-import { verifySession } from './dal';
+import { verifySession } from '@/lib/dal';
 
 export type ExampleDTO = { id: string | number; title: string };
 

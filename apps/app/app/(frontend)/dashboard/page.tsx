@@ -9,8 +9,8 @@ import {
 } from '@template/ui/components/card';
 import { Input } from '@template/ui/components/input';
 import { Label } from '@template/ui/components/label';
-import { verifySession } from '../../../lib/dal';
-import { getMyExamples } from '../../../lib/payload';
+import { verifySession } from '@/lib/dal';
+import { getMyExamples } from '@/lib/payload';
 import { addExample } from './actions';
 import { SignOutButton } from './SignOutButton';
 

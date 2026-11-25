@@ -4,7 +4,7 @@ import { useState, type FormEvent } from 'react';
 import { Button } from '@template/ui/components/button';
 import { Input } from '@template/ui/components/input';
 import { Label } from '@template/ui/components/label';
-import { authClient } from '../../../lib/auth-client';
+import { authClient } from '@/lib/auth-client';
 
 export function AuthForm({ mode }: { mode: 'login' | 'sign-up' }) {
   const [message, setMessage] = useState('');
