@@ -2,15 +2,14 @@ import 'server-only';
 
 import config from '@payload-config';
 import { getPayload } from 'payload';
+import type { Example } from '@/payload-types';
 import { verifySession } from '@/lib/dal';
-
-export type ExampleDTO = { id: string | number; title: string };
 
 /**
  * Payload Local API bypasses collection access rules by default. This function first verifies
  * the Better Auth session, then restricts every query by the immutable ownerId from that session.
  */
-export async function getMyExamples(): Promise<ExampleDTO[]> {
+export async function getMyExamples(): Promise<Example[]> {
   const { user } = await verifySession();
   const payload = await getPayload({ config });
   const result = await payload.find({
@@ -19,7 +18,7 @@ export async function getMyExamples(): Promise<ExampleDTO[]> {
     limit: 50,
     overrideAccess: true,
   });
-  return result.docs.map(({ id, title }) => ({ id, title }));
+  return result.docs;
 }
 
 /** User-facing writes repeat authentication and derive ownership only from the verified session. */
