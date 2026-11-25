@@ -1,0 +1,40 @@
+{
+  "name": "@template/app",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "oxlint .",
+    "typecheck": "tsc --noEmit",
+    "payload:types": "payload generate:types --config ./payload.config.ts",
+    "payload:migrate:create": "payload migrate:create --config ./payload.config.ts",
+    "payload:migrate": "payload migrate --config ./payload.config.ts",
+    "payload:migrate:status": "payload migrate:status --config ./payload.config.ts",
+    "auth:migrate": "pnpm --filter @template/auth exec auth migrate --yes",
+    "payload:importmap": "payload generate:importmap --config ./payload.config.ts",
+    "predev": "pnpm payload:importmap",
+    "prebuild": "pnpm payload:importmap",
+    "pretypecheck": "pnpm payload:importmap"
+  },
+  "dependencies": {
+    "@payloadcms/db-postgres": "catalog:",
+    "@payloadcms/next": "catalog:",
+    "@template/auth": "workspace:*",
+    "better-auth": "catalog:",
+    "next": "catalog:",
+    "payload": "catalog:",
+    "react": "catalog:",
+    "react-dom": "catalog:",
+    "server-only": "catalog:"
+  },
+  "devDependencies": {
+    "@types/node": "^26.0.0",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "sass": "^1.89.2",
+    "typescript": "catalog:"
+  }
+}
