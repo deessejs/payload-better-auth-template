@@ -10,22 +10,8 @@ import {
 
 export default function HomePage() {
   return (
-    <main className="min-h-svh bg-background text-foreground">
-      <header className="mx-auto flex w-full max-w-6xl items-center justify-between px-6 py-6">
-        <Link className="text-sm font-semibold tracking-tight" href="/">
-          FIELDNOTES <span className="text-muted-foreground">/ SaaS starter</span>
-        </Link>
-        <nav className="flex items-center gap-3" aria-label="Main navigation">
-          <Button asChild variant="ghost" size="sm">
-            <Link href="/login">Log in</Link>
-          </Button>
-          <Button asChild size="sm">
-            <Link href="/sign-up">Get started</Link>
-          </Button>
-        </nav>
-      </header>
-
-      <section className="mx-auto grid min-h-[calc(100svh-88px)] w-full max-w-6xl items-center gap-12 px-6 py-16 md:grid-cols-[1.1fr_0.9fr] md:py-24">
+    <main className="flex min-h-[calc(100svh-5rem)] items-center bg-background text-foreground">
+      <section className="mx-auto grid w-full max-w-6xl items-center gap-12 px-6 py-16 md:grid-cols-[1.1fr_0.9fr] md:py-24">
         <div className="max-w-2xl">
           <p className="mb-5 text-sm font-medium text-primary">
             A clear foundation for your next product

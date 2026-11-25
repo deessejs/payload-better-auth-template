@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import { Button } from '@template/ui/components/button';
 import {
   Card,
@@ -19,13 +18,10 @@ export default async function DashboardPage() {
   const examples = await getMyExamples();
 
   return (
-    <main className="min-h-svh bg-muted/40 px-4 py-8 sm:px-6">
+    <main className="min-h-[calc(100svh-5rem)] bg-muted/40 px-4 py-8 sm:px-6">
       <div className="mx-auto w-full max-w-4xl">
         <header className="mb-8 flex items-center justify-between gap-4">
           <div>
-            <Button asChild variant="link" className="h-auto px-0 text-muted-foreground">
-              <Link href="/">FIELDNOTES / SaaS starter</Link>
-            </Button>
             <p className="mt-3 text-xs font-semibold tracking-[0.18em] text-primary uppercase">
               Your workspace
             </p>

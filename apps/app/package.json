@@ -29,6 +29,7 @@
     "@template/ui": "workspace:*",
     "better-auth": "catalog:",
     "next": "catalog:",
+    "next-themes": "catalog:",
     "payload": "catalog:",
     "react": "catalog:",
     "react-dom": "catalog:",
