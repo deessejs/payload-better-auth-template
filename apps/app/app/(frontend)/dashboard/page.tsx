@@ -9,9 +9,9 @@ import {
 } from '@template/ui/components/card';
 import { Input } from '@template/ui/components/input';
 import { Label } from '@template/ui/components/label';
+import { addExample } from '@/actions/dashboard';
 import { verifySession } from '@/lib/dal';
 import { getMyExamples } from '@/lib/payload';
-import { addExample } from './actions';
 import { SignOutButton } from '@/components/dashboard/sign-out-button';
 
 export default async function DashboardPage() {
