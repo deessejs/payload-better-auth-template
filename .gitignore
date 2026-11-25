@@ -1,0 +1,10 @@
+node_modules
+.pnpm-store
+.turbo
+.local/
+.next
+*.tsbuildinfo
+.env
+.env.*
+!.env.example
+apps/app/app/(payload)/admin/importMap.js
