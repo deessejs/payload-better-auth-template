@@ -12,7 +12,7 @@ import { Label } from '@template/ui/components/label';
 import { verifySession } from '@/lib/dal';
 import { getMyExamples } from '@/lib/payload';
 import { addExample } from './actions';
-import { SignOutButton } from './SignOutButton';
+import { SignOutButton } from '@/components/dashboard/sign-out-button';
 
 export default async function DashboardPage() {
   const { user } = await verifySession();

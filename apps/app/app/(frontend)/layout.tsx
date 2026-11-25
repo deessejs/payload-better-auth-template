@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
 import '@template/ui/globals.css';
+import { AppProviders } from '@/components/providers';
 
 export const metadata: Metadata = {
   title: 'SaaS Starter',
@@ -10,7 +11,9 @@ export const metadata: Metadata = {
 export default function FrontendLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <AppProviders>{children}</AppProviders>
+      </body>
     </html>
   );
 }

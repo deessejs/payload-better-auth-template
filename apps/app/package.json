@@ -22,6 +22,8 @@
   "dependencies": {
     "@payloadcms/db-postgres": "catalog:",
     "@payloadcms/next": "catalog:",
+    "@tanstack/react-form": "catalog:",
+    "@tanstack/react-query": "catalog:",
     "@template/auth": "workspace:*",
     "@template/ui": "workspace:*",
     "better-auth": "catalog:",

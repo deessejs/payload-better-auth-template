@@ -8,7 +8,7 @@ import {
   CardHeader,
   CardTitle,
 } from '@template/ui/components/card';
-import { AuthForm } from '../AuthForm';
+import { AuthForm } from '@/components/auth/auth-form';
 
 export default function LoginPage() {
   return (

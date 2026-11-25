@@ -34,7 +34,7 @@ Payload and its used Payload packages are pinned together at 3.94.2. This templa
 
 ## Frontend UI
 
-The `(frontend)` root layout imports `@template/ui/globals.css` once. Shared Button, Card, Input, Label, and `cn` exports live in `packages/ui`; app-specific pages and the Better Auth form stay in `apps/app`. The shared Tailwind v4 stylesheet scans both workspaces. Payload's vendor stylesheet is imported only by the separate `(payload)` layout and is not part of the frontend design system.
+The `(frontend)` root layout imports `@template/ui/globals.css` once and wraps frontend routes in the app-local TanStack Query provider. `@tanstack/react-query` and `@tanstack/react-form` are direct `apps/app` dependencies; the Better Auth form uses TanStack Form for field state and validation while Better Auth continues to handle and validate authentication requests. App-specific components live under `apps/app/components` (including auth and dashboard components), while shared Button, Card, Input, Label, and `cn` exports live in `packages/ui`. The shared Tailwind v4 stylesheet scans both workspaces. Payload's vendor stylesheet is imported only by the separate `(payload)` layout and is not part of the frontend design system.
 
 Both `apps/app/components.json` and `packages/ui/components.json` are configured for the shadcn monorepo CLI with matching `radix-nova`, neutral, and Lucide settings. Run the CLI from `apps/app` to add app-facing components; shared primitives are routed to `packages/ui`.
 
