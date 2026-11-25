@@ -6,8 +6,8 @@
     "build": "turbo build",
     "lint": "turbo lint",
     "typecheck": "turbo typecheck",
-    "format": "oxfmt .",
-    "format:check": "oxfmt --check ."
+    "format": "oxfmt --ignore-path .oxfmtignore .",
+    "format:check": "oxfmt --ignore-path .oxfmtignore --check ."
   },
   "devDependencies": {
     "oxfmt": "catalog:",

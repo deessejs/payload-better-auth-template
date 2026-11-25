@@ -2,6 +2,8 @@
 
 A single Next.js app with Payload 3 for content and trusted CMS administration, and Better Auth for customer accounts. Both live in `apps/app`; they use separate authentication systems and own separate PostgreSQL schemas.
 
+The public homepage, Better Auth screens, and dashboard use shadcn/ui with Tailwind CSS v4. Shared primitives, tokens, stylesheet, and PostCSS setup live in `packages/ui` as `@template/ui`. Payload's required admin CSS stays isolated in its own route group.
+
 ## Requirements
 
 - Node.js `^22.23.5`, `^24.22.3`, or `>=26.13.1`
@@ -29,6 +31,12 @@ Payload and its used Payload packages are pinned together at 3.94.2. This templa
 - `/admin` Payload Admin Panel, authenticated only with Payload's native `admins` collection
 - `/api/auth/*` Better Auth handler
 - `/api/examples` Payload REST endpoint, available to authenticated Payload admins only
+
+## Frontend UI
+
+The `(frontend)` root layout imports `@template/ui/globals.css` once. Shared Button, Card, Input, Label, and `cn` exports live in `packages/ui`; app-specific pages and the Better Auth form stay in `apps/app`. The shared Tailwind v4 stylesheet scans both workspaces. Payload's vendor stylesheet is imported only by the separate `(payload)` layout and is not part of the frontend design system.
+
+Both `apps/app/components.json` and `packages/ui/components.json` are configured for the shadcn monorepo CLI with matching `radix-nova`, neutral, and Lucide settings. Run the CLI from `apps/app` to add app-facing components; shared primitives are routed to `packages/ui`.
 
 The sample dashboard reads and creates a small `examples` record through Payload's Local API. Local API calls bypass Payload access control, so the DAL verifies Better Auth independently and the query filters on the session's user ID; writes derive `ownerId` from the verified session. A Better Auth session is not a Payload user and never grants access to `/admin`.
 

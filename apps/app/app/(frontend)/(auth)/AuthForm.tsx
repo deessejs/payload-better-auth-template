@@ -1,6 +1,9 @@
 'use client';
 
 import { useState, type FormEvent } from 'react';
+import { Button } from '@template/ui/components/button';
+import { Input } from '@template/ui/components/input';
+import { Label } from '@template/ui/components/label';
 import { authClient } from '../../../lib/auth-client';
 
 export function AuthForm({ mode }: { mode: 'login' | 'sign-up' }) {
@@ -32,33 +35,34 @@ export function AuthForm({ mode }: { mode: 'login' | 'sign-up' }) {
   }
 
   return (
-    <form className="form" onSubmit={submit}>
+    <form className="grid gap-5" onSubmit={submit}>
       {mode === 'sign-up' && (
-        <label>
-          Name
-          <input name="name" autoComplete="name" required />
-        </label>
+        <div className="grid gap-2">
+          <Label htmlFor="name">Name</Label>
+          <Input id="name" name="name" autoComplete="name" required />
+        </div>
       )}
-      <label>
-        Email
-        <input name="email" type="email" autoComplete="email" required />
-      </label>
-      <label>
-        Password
-        <input
+      <div className="grid gap-2">
+        <Label htmlFor="email">Email</Label>
+        <Input id="email" name="email" type="email" autoComplete="email" required />
+      </div>
+      <div className="grid gap-2">
+        <Label htmlFor="password">Password</Label>
+        <Input
+          id="password"
           name="password"
           type="password"
           autoComplete={mode === 'login' ? 'current-password' : 'new-password'}
           minLength={8}
           required
         />
-      </label>
-      <p className="form-message" role="alert">
+      </div>
+      <p className="min-h-5 text-sm text-destructive" role="alert">
         {message}
       </p>
-      <button className="button" disabled={pending}>
+      <Button className="w-full" disabled={pending}>
         {pending ? 'Please wait…' : mode === 'login' ? 'Log in' : 'Create account'}
-      </button>
+      </Button>
     </form>
   );
 }

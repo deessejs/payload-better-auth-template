@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
-import './styles.css';
+import '@template/ui/globals.css';
 
 export const metadata: Metadata = {
   title: 'SaaS Starter',
