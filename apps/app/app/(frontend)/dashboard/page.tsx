@@ -1,4 +1,3 @@
-import { Button } from '@template/ui/components/button';
 import {
   Card,
   CardContent,
@@ -6,12 +5,10 @@ import {
   CardHeader,
   CardTitle,
 } from '@template/ui/components/card';
-import { Input } from '@template/ui/components/input';
-import { Label } from '@template/ui/components/label';
-import { addExample } from '@/actions/dashboard';
 import { verifySession } from '@/lib/dal';
 import { getMyExamples } from '@/lib/payload';
 import { SignOutButton } from '@/components/dashboard/sign-out-button';
+import { CreateExampleForm } from '@/components/dashboard/create-example-form';
 
 export default async function DashboardPage() {
   const { user } = await verifySession();
@@ -39,7 +36,7 @@ export default async function DashboardPage() {
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <ul className="divide-y rounded-lg border">
+            <ul className="divide-y rounded-lg border" aria-label="Your example records">
               {examples.map((example) => (
                 <li className="px-4 py-3 text-sm" key={example.id}>
                   {example.title}
@@ -49,16 +46,7 @@ export default async function DashboardPage() {
                 <li className="px-4 py-3 text-sm text-muted-foreground">No records yet.</li>
               )}
             </ul>
-            <form
-              className="mt-6 flex flex-col items-start gap-3 sm:flex-row sm:items-end"
-              action={addExample}
-            >
-              <div className="grid w-full gap-2 sm:max-w-sm">
-                <Label htmlFor="title">New record title</Label>
-                <Input id="title" name="title" maxLength={120} required />
-              </div>
-              <Button>Add example</Button>
-            </form>
+            <CreateExampleForm />
           </CardContent>
         </Card>
       </div>
